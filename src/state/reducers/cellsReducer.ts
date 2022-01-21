@@ -25,19 +25,19 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
       const { id, content } = action.payload;
       // WITH IMMER
       state.data[id].content = content;
-      // WITHOUT IMMER
-      // return {
-      //   ...state,
-      //   data: {
-      //     ...state.data,
-      //     [id]: {
-      //       ...state.data[id],
-      //       content: content,
-      //     },
-      //   },
-      // };
       return state;
     // break;
+    // WITHOUT IMMER
+    // return {
+    //   ...state,
+    //   data: {
+    //     ...state.data,
+    //     [id]: {
+    //       ...state.data[id],
+    //       content: content,
+    //     },
+    //   },
+    // };
     case ActionType.DELETE_CELL:
       delete state.data[action.payload];
       state.order = state.order.filter((id) => id !== action.payload);
